@@ -24,6 +24,10 @@ A free, open-source tool to help individuals and small organizations detect misc
   ```
 
 ## Usage
+*Make sure to activate Virtual Environment*
+```
+source venv/bin/activate
+```
 
 ### 1. **Command-Line Interface (CLI)**
 
