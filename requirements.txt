@@ -3,4 +3,5 @@ sslyze
 requests
 beautifulsoup4
 jinja2
+dnspython # For DNS scanning
 # For GUI: Tkinter (usually included with Python, else install python3-tk)
