@@ -11,23 +11,26 @@ HTML_TEMPLATE = """
         .section { margin-bottom: 2em; }
         .risk { color: #c0392b; }
         .advice { color: #2980b9; }
+        .error { color: #b71c1c; font-weight: bold; }
     </style>
 </head>
 <body>
     <h1>Scan Report for {{ target }}</h1>
     <div class="section">
         <h2>Open Ports</h2>
-        {% if ports.open_ports %}
+        {% if ports.error %}
+            <p class="error">Error: {{ ports.error }}</p>
+        {% elif ports.open_ports %}
             <p class="risk">Open ports: {{ ports.open_ports|join(', ') }}</p>
             <p class="advice">{{ ports.advice }}</p>
         {% else %}
-            <p>No open ports detected or scan failed.</p>
+            <p>No open ports detected.</p>
         {% endif %}
     </div>
     <div class="section">
         <h2>SSL/TLS</h2>
         {% if ssl.error %}
-            <p>Error: {{ ssl.error }}</p>
+            <p class="error">Error: {{ ssl.error }}</p>
         {% else %}
             <p>Subject: {{ ssl.subject }}</p>
             <p>Issuer: {{ ssl.issuer }}</p>
@@ -38,13 +41,17 @@ HTML_TEMPLATE = """
     <div class="section">
         <h2>Web Configuration</h2>
         {% if http.error %}
-            <p>Error: {{ http.error }}</p>
+            <p class="error">Error: {{ http.error }}</p>
         {% else %}
-            <ul>
-            {% for finding in http.findings %}
-                <li class="risk">{{ finding }}</li>
-            {% endfor %}
-            </ul>
+            {% if http.findings %}
+                <ul>
+                {% for finding in http.findings %}
+                    <li class="risk">{{ finding }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No major web config issues detected.</p>
+            {% endif %}
             <p class="advice">{{ http.advice }}</p>
         {% endif %}
     </div>

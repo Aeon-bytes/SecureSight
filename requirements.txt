@@ -1,0 +1,6 @@
+python-nmap
+sslyze
+requests
+beautifulsoup4
+jinja2
+# For GUI: Tkinter (usually included with Python, else install python3-tk)

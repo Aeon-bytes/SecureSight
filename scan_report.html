@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configuration Exposure Scan Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1 { color: #2c3e50; }
+        .section { margin-bottom: 2em; }
+        .risk { color: #c0392b; }
+        .advice { color: #2980b9; }
+        .error { color: #b71c1c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Scan Report for testphp.vulnweb.com</h1>
+    <div class="section">
+        <h2>Open Ports</h2>
+        
+            <p class="error">Error: Host testphp.vulnweb.com is unreachable or scan failed.</p>
+        
+    </div>
+    <div class="section">
+        <h2>SSL/TLS</h2>
+        
+            <p class="error">Error: No certificate info found in scan result.</p>
+        
+    </div>
+    <div class="section">
+        <h2>Web Configuration</h2>
+        
+            
+                <ul>
+                
+                    <li class="risk">Missing security headers: Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security</li>
+                
+                    <li class="risk">X-Powered-By header present: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</li>
+                
+                    <li class="risk">Server header present: nginx/1.19.0</li>
+                
+                    <li class="risk">Error page detected. May reveal sensitive info.</li>
+                
+                </ul>
+            
+            <p class="advice">Review findings and apply recommended security headers, restrict CORS, and update CMS/plugins as needed.</p>
+        
+    </div>
+</body>
+</html>
